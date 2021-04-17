@@ -1,0 +1,14 @@
+- hosts: Master
+  roles:
+          - name: K8s Configuration Master
+            role: k8s_Master_Config
+
+- hosts: Slave
+  vars_prompt:
+          - name: Master Token input
+            prompt: "Enter Token to Join Slaves to the Master"
+            private: no
+  
+  roles:
+          - name: K8s COnfiguration Slaves
+            role: k8s_Slave_Config
